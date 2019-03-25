@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.BitmapFactory;
 import android.os.Build;
+import android.provider.Settings;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -50,6 +51,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     .setContentTitle("暂停中...")
                     .setContentText("点击返回继续播放")
                     .setContentIntent(pi)
+                    .setSound(Settings.System.DEFAULT_ALARM_ALERT_URI)
+                    .setDefaults(Notification.DEFAULT_ALL)
+                    .setVibrate(new long[]{0,1000,1000,1000})
                     .setSmallIcon(R.mipmap.ic_launcher)
                     .setLargeIcon(BitmapFactory.decodeResource(getResources(),R.mipmap.ic_launcher))
                     .setAutoCancel(true)
