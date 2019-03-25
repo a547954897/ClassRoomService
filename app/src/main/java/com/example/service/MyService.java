@@ -1,10 +1,18 @@
 package com.example.service;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 public class MyService extends Service {
@@ -100,5 +108,28 @@ public class MyService extends Service {
             mediaPlayer.stop();
         }
     }
+
+/*
+    public void sendNotification(){
+        Intent intent = new Intent("bofang");
+        PendingIntent pi = PendingIntent.getActivity(this,0,intent,0);
+        NotificationManager manager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+
+        if (Build.VERSION.SDK_INT >= 26){
+            NotificationChannel channel = new NotificationChannel("1","channel1",NotificationManager.IMPORTANCE_MAX);
+            manager.createNotificationChannel(channel);
+        }
+
+        Notification notification = new NotificationCompat.Builder(this,"1")
+                .setContentTitle("暂停中...")
+                .setContentText("点击继续播放")
+                //.setContentIntent(pi)
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setLargeIcon(BitmapFactory.decodeResource(getResources(),R.mipmap.ic_launcher))
+                .setAutoCancel(true)
+                .build();
+        manager.notify(1,notification);
+    }
+*/
 
 }
